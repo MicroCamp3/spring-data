@@ -1,7 +1,8 @@
-package com.comarch.bootcamp.jdbc;
+package com.comarch.bootcamp.jdbc.jpa.web;
 
 import com.comarch.bootcamp.jdbc.jpa.dto.OrderDto;
 import com.comarch.bootcamp.jdbc.jpa.services.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class OrderController {
     }
 
     @PostMapping(value = "")
-    public OrderDto create(@RequestBody OrderDto orderDto) {
+    public OrderDto create(@Valid @RequestBody OrderDto orderDto) {
         return orderService.create(orderDto);
     }
 
