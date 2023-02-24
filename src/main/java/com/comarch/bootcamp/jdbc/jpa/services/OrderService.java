@@ -42,15 +42,17 @@ public class OrderService {
 
     @PostConstruct
     public void init() {
-        Customer savedCustomer = customerRepository.save(createCustomer(
-                "Krzystof", "Kowalski", "krzkow"));
+        if (customerRepository.count() == 0) {
+            Customer savedCustomer = customerRepository.save(createCustomer(
+                    "Krzystof", "Kowalski", "krzkow"));
 
-        Customer savedCustomer2 = customerRepository.save(createCustomer(
-                "Ziutek", "Ziutkowski", "ziuziu"));
+            Customer savedCustomer2 = customerRepository.save(createCustomer(
+                    "Ziutek", "Ziutkowski", "ziuziu"));
 
-        orderRepository.saveAndFlush(createOrder(savedCustomer));
-        orderRepository.saveAndFlush(createOrder(savedCustomer2));
-        orderRepository.saveAndFlush(createOrder(savedCustomer));
+            orderRepository.saveAndFlush(createOrder(savedCustomer));
+            orderRepository.saveAndFlush(createOrder(savedCustomer2));
+            orderRepository.saveAndFlush(createOrder(savedCustomer));
+        }
     }
 
     public List<OrderDto> findAll(Pageable pageable) {
