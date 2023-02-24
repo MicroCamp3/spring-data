@@ -10,14 +10,13 @@ import com.comarch.bootcamp.jdbc.jpa.repository.CustomerRepository;
 import com.comarch.bootcamp.jdbc.jpa.repository.OrderRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

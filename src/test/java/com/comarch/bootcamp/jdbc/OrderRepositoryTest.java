@@ -41,8 +41,8 @@ class OrderRepositoryTest {
     assertThat(orderRepository.count()).isEqualTo(orders + 3);
   }
 
-  private static Order createOrder(Customer savedCustomer) {
-    return new Order(null, new BigDecimal("10.01"), savedCustomer);
+  public static Order createOrder(Customer savedCustomer) {
+    return new Order(null, new BigDecimal("100.01"), savedCustomer);
   }
 
   private static Customer createCustomer(String name, String lastName, String key) {

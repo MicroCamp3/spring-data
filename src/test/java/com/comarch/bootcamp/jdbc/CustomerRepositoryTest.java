@@ -43,24 +43,24 @@ class CustomerRepositoryTest {
 
   @Test
   void getById() {
-    customerRepository.save(
-        new com.comarch.bootcamp.jdbc.jpa.model.Customer(null, "Krzysztof", "Kowalski", "krzkow"));
+    Customer savedCustomer =
+        customerRepository.save(new Customer(null, "Krzysztof", "Kowalski", "krzkow"));
 
     Optional<com.comarch.bootcamp.jdbc.jpa.model.Customer> customer =
-        customerRepository.findById(1);
+        customerRepository.findById(savedCustomer.getId());
 
     assertThat(customer).isPresent();
   }
 
   @Test
   void deleteById() {
-    customerRepository.saveAndFlush(
-        new com.comarch.bootcamp.jdbc.jpa.model.Customer(null, "Krzysztof", "Kowalski", "krzkow"));
+    Customer savedCustomer =
+        customerRepository.saveAndFlush(new Customer(null, "Krzysztof", "Kowalski", "krzkow"));
 
-    customerRepository.deleteById(1);
+    customerRepository.deleteById(savedCustomer.getId());
 
     Optional<com.comarch.bootcamp.jdbc.jpa.model.Customer> customer =
-        customerRepository.findById(1);
+        customerRepository.findById(savedCustomer.getId());
 
     assertThat(customer).isNotPresent();
   }
