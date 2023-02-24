@@ -21,7 +21,7 @@ public class OrderController {
 
   @RequestMapping("")
   public List<OrderDto> listOrders(Pageable pageable) {
-    return orderService.findAll(pageable);
+    return orderService.findWithPremiumPrice(pageable);
   }
 
   @PostMapping(value = "")

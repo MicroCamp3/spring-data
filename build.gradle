@@ -53,6 +53,8 @@ dependencies {
 	liquibaseRuntime 'info.picocli:picocli:4.6.1'
 	liquibaseRuntime 'com.mysql:mysql-connector-j'
 //	END liquibase
+
+	annotationProcessor('org.hibernate.orm:hibernate-jpamodelgen:6.1.7.Final')
 }
 
 liquibase {
