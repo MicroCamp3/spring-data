@@ -7,9 +7,9 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface OrderMapper extends EntityMapper<OrderDto, Order> {
-    @Mapping(source = "customerId", target = "customer.id")
-    Order toEntity(OrderDto dto);
+  @Mapping(source = "customerId", target = "customer.id")
+  Order toEntity(OrderDto dto);
 
-    @Mapping(target = "customerId", source = "customer.id")
-    OrderDto toDto(Order entnity);
+  @Mapping(target = "customerId", source = "customer.id")
+  OrderDto toDto(Order entnity);
 }

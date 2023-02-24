@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @Entity
@@ -15,20 +13,17 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer {
-    public Customer(Integer id) {
-        this.id = id;
-    }
+  @Id @GeneratedValue Integer id;
 
-    @Id
-    @GeneratedValue
-    Integer id;
-    @Column(name = "name")
-    String firstName;
-    String lastName;
-    @Column(unique = true)
-    String customerKey;
+  @Column(name = "name")
+  String firstName;
 
+  String lastName;
 
+  @Column(unique = true)
+  String customerKey;
 
-
+  public Customer(Integer id) {
+    this.id = id;
+  }
 }

@@ -1,12 +1,11 @@
 package com.comarch.bootcamp.jdbc.jpa.dto;
 
+import java.util.List;
 import lombok.Builder;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @Builder
 public class ValidationErrors {
-   private List<String> errors;
+  private List<String> errors;
 }

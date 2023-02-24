@@ -5,5 +5,4 @@ import com.comarch.bootcamp.jdbc.jpa.model.Customer;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface CustomerMapper extends EntityMapper<CustomerDto, Customer> {
-}
+public interface CustomerMapper extends EntityMapper<CustomerDto, Customer> {}
