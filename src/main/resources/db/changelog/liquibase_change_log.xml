@@ -1,0 +1,96 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="krzysztof.szymeczek (generated)" id="1677232368676-1">
+        <createTable tableName="customer">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="customer_key" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="krzysztof.szymeczek (generated)" id="1677232368676-2">
+        <createTable tableName="customer_order">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="crated_by" type="VARCHAR(255)"/>
+            <column name="created_date" type="datetime"/>
+            <column name="last_modify_date" type="datetime"/>
+            <column name="modified_by" type="VARCHAR(255)"/>
+            <column name="price" type="DECIMAL(38, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="krzysztof.szymeczek (generated)" id="1677232368676-3">
+        <createTable tableName="customer_order_seq">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="krzysztof.szymeczek (generated)" id="1677232368676-4">
+        <createTable tableName="customer_seq">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="krzysztof.szymeczek (generated)" id="1677232368676-5">
+        <createTable tableName="flyway_schema_history">
+            <column name="installed_rank" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="VARCHAR(50)"/>
+            <column name="description" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="script" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="checksum" type="INT"/>
+            <column name="installed_by" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="installed_on" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="execution_time" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="success" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="krzysztof.szymeczek (generated)" id="1677232368676-6">
+        <createIndex indexName="FKf9abd30bhiqvugayxlpq8ryq9" tableName="customer_order">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="krzysztof.szymeczek (generated)" id="1677232368676-7">
+        <createIndex indexName="flyway_schema_history_s_idx" tableName="flyway_schema_history">
+            <column name="success"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="krzysztof.szymeczek (generated)" id="1677232368676-8">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="customer_order" constraintName="FKf9abd30bhiqvugayxlpq8ryq9" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="customer" validate="true"/>
+    </changeSet>
+    <changeSet id="1677232368676-9" author="krzszy">
+       <insert tableName="customer_order_seq">
+           <column name="next_val">1</column>
+       </insert>
+    </changeSet>
+    <changeSet id="1677232368676-10" author="krzszy">
+        <insert tableName="customer_seq">
+            <column name="next_val">1</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
